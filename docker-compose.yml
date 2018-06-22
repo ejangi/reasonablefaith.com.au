@@ -22,8 +22,6 @@ services:
     volumes:
         - ./mariadb-data:/var/lib/mysql
         - ./mariadb_root_password:/tmp/mariadb_root_password
-    ports:
-      - 3306:3306
     environment:
       MYSQL_DATABASE: reasonablefaith
       MYSQL_ROOT_PASSWORD_FILE: /tmp/mariadb_root_password
