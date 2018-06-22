@@ -1,0 +1,6 @@
+.DS_Store
+mariadb_root_password
+mariadb-data/
+!mariadb-data/.*
+wp-content/
+!wp-content/.*
