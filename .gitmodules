@@ -1,0 +1,3 @@
+[submodule "wp-content/themes/reasonablefaith"]
+	path = wp-content/themes/reasonablefaith
+	url = git@github.com:ejangi/reasonablefaith.git
