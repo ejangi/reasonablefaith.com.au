@@ -3,7 +3,7 @@ services:
   reasonablefaith:
     image: wordpress
     ports:
-      - 8080:80
+      - 8082:80
     volumes:
       - ./wp-content:/var/www/html/wp-content
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini 
