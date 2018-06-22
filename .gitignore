@@ -4,3 +4,4 @@ mariadb-data/
 !mariadb-data/.*
 wp-content/
 !wp-content/.*
+!wp-content/themes/reasonablefaith
