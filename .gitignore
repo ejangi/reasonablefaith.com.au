@@ -2,9 +2,9 @@
 mariadb_root_password
 mariadb-data/
 !mariadb-data/.*
+wp-content/
 !wp-content/.*
 !wp-content/themes/reasonablefaith
 !wp-content/plugins/pagemash
 !wp-content/plugins/yet-another-featured-posts-plugin
 !wp-content/plugins/wp-orderposts.php
-wp-content/
