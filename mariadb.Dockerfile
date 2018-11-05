@@ -6,4 +6,4 @@ ADD backup.cron /etc/cron.d/backup.cron
 RUN chmod 0644 /etc/cron.d/backup.cron
 
 ADD backup.sh /root/backup.sh
-RUN chmod 0644 /root/backup.sh
+RUN chmod 0774 /root/backup.sh
