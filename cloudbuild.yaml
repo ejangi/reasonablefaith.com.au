@@ -1,14 +1,14 @@
 steps:
     # Decrypt the service-account.json file:
     - name: gcr.io/cloud-builders/gcloud
-        args:
-        - kms
-        - decrypt
-        - --ciphertext-file=service-account.json.enc
-        - --plaintext-file=service-account.json
-        - --location=australia-southeast1
-        - --keyring=secrets
-        - --key=build-key
+      args:
+      - kms
+      - decrypt
+      - --ciphertext-file=service-account.json.enc
+      - --plaintext-file=service-account.json
+      - --location=australia-southeast1
+      - --keyring=secrets
+      - --key=build-key
 
     # Build and tag the image.
     - name: 'gcr.io/cloud-builders/docker'
