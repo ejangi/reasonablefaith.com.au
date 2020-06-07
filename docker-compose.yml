@@ -1,41 +1,19 @@
-version: '3.1'
+version: '3.2'
 services:
-  reasonablefaith:
-    build:
-        context: .
-        dockerfile: wordpress.Dockerfile
-    ports:
-      - 8082:80
-    volumes:
-      - ./wp-content:/var/www/html/wp-content
-      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini 
-      - ./errors.ini:/usr/local/etc/php/conf.d/errors.ini 
-      - ./mariadb_root_password:/tmp/mariadb_root_password
-    environment:
-      WORDPRESS_DB_HOST: reasonablefaith_db
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_NAME: reasonablefaith
-      WORDPRESS_DB_PASSWORD_FILE: /tmp/mariadb_root_password
-    restart: always
-  reasonablefaith_db:
-    build:
-        context: .
-        dockerfile: mariadb.Dockerfile
-    volumes:
-        - ./mariadb-data:/var/lib/mysql
-        - ./mariadb_root_password:/tmp/mariadb_root_password
-    environment:
-      MYSQL_DATABASE: reasonablefaith
-      MYSQL_ROOT_PASSWORD_FILE: /tmp/mariadb_root_password
-    restart: always
-  reasonablefaith_cron:
+  app:
     build:
       context: .
-      dockerfile: cron.Dockerfile
-    volumes:
-        - ./mariadb-data:/var/lib/mysql
-        - ./mariadb_root_password:/tmp/mariadb_root_password
-    environment:
-      MYSQL_DATABASE: reasonablefaith
-      MYSQL_ROOT_PASSWORD_FILE: /tmp/mariadb_root_password
+      args:
+        _WP_DB_HOST: "127.0.0.1"
+        _WP_DB_USER: reasonablefaith
+        _WP_DB_NAME: reasonablefaith_wp
+        _WP_DB_PASSWORD: <insert_password_here>
+        _WP_THEMES: https://storage.googleapis.com/reasonablefaith-public/reasonablefaith.zip
+        _WP_PLUGINS: classic-editor pagemash yet-another-featured-posts-plugin wp-stateless wordpress-importer wp-mail-smtp https://storage.googleapis.com/reasonablefaith-public/wp-orderposts.zip
+        _CLOUDSQL_INSTANCE: "dolcestrings:australia-southeast1:mysql"
+        _SERVICE_ACCOUNT_FILE: service-account.json
+    environment: 
+      PORT: 3000
+    ports:
+      - 3000:3000
     restart: always
