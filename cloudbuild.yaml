@@ -13,7 +13,7 @@ steps:
     # Build and tag the image.
     - name: 'gcr.io/cloud-builders/docker'
       id: Build
-      args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/reasonablefaith:$REVISION_ID', '.', '--build-arg', '_WP_DB_HOST=$_WP_DB_HOST,_WP_DB_USER=$_WP_DB_USER,_WP_DB_NAME=$_WP_DB_NAME,_WP_DB_PASSWORD=$_WP_DB_PASSWORD,_WP_THEMES=$_WP_THEMES,_WP_PLUGINS=$_WP_PLUGINS,_CLOUDSQL_INSTANCE=$_CLOUDSQL_INSTANCE,_SERVICE_ACCOUNT_FILE=$_SERVICE_ACCOUNT_FILE' ]
+      args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/reasonablefaith:$REVISION_ID', '.', '--build-arg', '_WP_DB_HOST=$_WP_DB_HOST', '--build-arg' ,'_WP_DB_USER=$_WP_DB_USER', '--build-arg' ,'_WP_DB_NAME=$_WP_DB_NAME', '--build-arg' ,'_WP_DB_PASSWORD=$_WP_DB_PASSWORD', '--build-arg' ,'_WP_THEMES=$_WP_THEMES', '--build-arg' ,'_WP_PLUGINS=$_WP_PLUGINS', '--build-arg' ,'_CLOUDSQL_INSTANCE=$_CLOUDSQL_INSTANCE', '--build-arg' ,'_SERVICE_ACCOUNT_FILE=$_SERVICE_ACCOUNT_FILE' ]
     
     - name: 'gcr.io/cloud-builders/docker'
       id: Push
